@@ -4,14 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Ask the user for their grade percentage
         Console.Write("Enter your grade percentage: ");
         float grade = float.Parse(Console.ReadLine());
 
         string letter = "";
         string sign = "";
 
-        // Determine the letter grade
         if (grade >= 90)
         {
             letter = "A";
@@ -33,7 +31,7 @@ class Program
             letter = "F";
         }
 
-        // Determine the + or -
+        
         float lastDigit = grade % 10;
 
         if (lastDigit >= 7)
@@ -49,21 +47,21 @@ class Program
             sign = "";
         }
 
-        // Handle special cases
+        
         if (letter == "A" && sign == "+")
         {
-            sign = "";   // No A+
+            sign = "";   
         }
 
         if (letter == "F")
         {
-            sign = "";   // No F+ or F-
+            sign = "";   
         }
 
-        // Display the grade
+        
         Console.WriteLine($"Your grade is: {letter}{sign}");
 
-        // Determine if the student passed
+        
         if (grade >= 70)
         {
             Console.WriteLine("Congratulations! You passed the course.");

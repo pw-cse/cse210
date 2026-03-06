@@ -22,17 +22,17 @@ class Program
             }
         }
 
-        // Compute sum
+        
         int sum = 0;
         foreach (int num in numbers)
         {
             sum += num;
         }
 
-        // Compute average
+        
         double average = (double)sum / numbers.Count;
 
-        // Find largest number
+        
         int largest = numbers[0];
         foreach (int num in numbers)
         {
@@ -46,7 +46,7 @@ class Program
         Console.WriteLine($"The average is: {average}");
         Console.WriteLine($"The largest number is: {largest}");
 
-        // Stretch Challenge: Smallest positive number
+        
         int smallestPositive = int.MaxValue;
 
         foreach (int num in numbers)
@@ -59,7 +59,7 @@ class Program
 
         Console.WriteLine($"The smallest positive number is: {smallestPositive}");
 
-        // Stretch Challenge: Sort list
+        
         numbers.Sort();
 
         Console.WriteLine("The sorted list is:");
