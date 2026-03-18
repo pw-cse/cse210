@@ -1,3 +1,11 @@
+// EXCEEDING REQUIREMENTS:
+// In this program, I went beyond the core requirements by adding additional prompts
+// to improve the user experience and make journaling more engaging.
+// I also added confirmation messages when saving and loading files to give users feedback.
+// Additionally, I structured the program using multiple classes (Entry, Journal, PromptGenerator)
+// to demonstrate abstraction and separation of responsibilities.
+// These improvements make the program more user-friendly and closer to a real-world application.
+
 using System;
 
 class Program
