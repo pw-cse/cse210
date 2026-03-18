@@ -5,15 +5,17 @@
 // to demonstrate encapsulation and separation of responsibilities.
 
 using System;
+using System.IO;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Reference reference = new Reference("John", 3, 16);
+        List<Scripture> scriptures = LoadScriptures("scriptures.txt");
 
-        Scripture scripture = new Scripture(reference,
-            "For God so loved the world that he gave his only begotten Son");
+        Random random = new Random();
+        Scripture scripture = scriptures[random.Next(scriptures.Count)];
 
         while (true)
         {
@@ -35,5 +37,29 @@ class Program
 
             scripture.HideRandomWords(3);
         }
+    }
+
+    static List<Scripture> LoadScriptures(string filename)
+    {
+        List<Scripture> scriptures = new List<Scripture>();
+
+        string[] lines = File.ReadAllLines(filename);
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split("|");
+
+            string book = parts[0];
+            int chapter = int.Parse(parts[1]);
+            int verse = int.Parse(parts[2]);
+            string text = parts[3];
+
+            Reference reference = new Reference(book, chapter, verse);
+            Scripture scripture = new Scripture(reference, text);
+
+            scriptures.Add(scripture);
+        }
+
+        return scriptures;
     }
 }
