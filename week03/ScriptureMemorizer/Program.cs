@@ -5,18 +5,32 @@
 // to demonstrate encapsulation and separation of responsibilities.
 
 using System;
-using System.IO;
 using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        List<Scripture> scriptures = LoadScriptures("scriptures.txt");
+        // Create multiple scriptures manually
+        List<Scripture> scriptures = new List<Scripture>();
 
+        scriptures.Add(new Scripture(
+            new Reference("John", 3, 16),
+            "For God so loved the world that he gave his only begotten Son"));
+
+        scriptures.Add(new Scripture(
+            new Reference("Proverbs", 3, 5),
+            "Trust in the Lord with all thine heart and lean not unto thine own understanding"));
+
+        scriptures.Add(new Scripture(
+            new Reference("Psalm", 23, 1),
+            "The Lord is my shepherd I shall not want"));
+
+        // Randomly select one
         Random random = new Random();
         Scripture scripture = scriptures[random.Next(scriptures.Count)];
 
+        // Main loop
         while (true)
         {
             Console.Clear();
@@ -37,29 +51,7 @@ class Program
 
             scripture.HideRandomWords(3);
         }
-    }
 
-    static List<Scripture> LoadScriptures(string filename)
-    {
-        List<Scripture> scriptures = new List<Scripture>();
-
-        string[] lines = File.ReadAllLines(filename);
-
-        foreach (string line in lines)
-        {
-            string[] parts = line.Split("|");
-
-            string book = parts[0];
-            int chapter = int.Parse(parts[1]);
-            int verse = int.Parse(parts[2]);
-            string text = parts[3];
-
-            Reference reference = new Reference(book, chapter, verse);
-            Scripture scripture = new Scripture(reference, text);
-
-            scriptures.Add(scripture);
-        }
-
-        return scriptures;
+        Console.WriteLine("\nProgram finished.");
     }
 }
