@@ -5,7 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Create a list of shapes (POLYMORPHISM happens here)
+        // Create a list of shapes 
         List<Shape> shapes = new List<Shape>();
 
         shapes.Add(new Square("Red", 4));
